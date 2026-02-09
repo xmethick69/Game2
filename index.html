@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Only For You ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  text-align:center;
+}
+.box{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  width:90%;
+  max-width:350px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:10px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+input{
+  padding:8px;
+  width:80%;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+.heart{
+  font-size:32px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box" id="screen">
+  <h2>Hey Cutie ❤️</h2>
+  <p>This is a tiny surprise made just for you 🫶</p>
+  <button onclick="step1()">Start</button>
+</div>
+
+<script>
+const screen = document.getElementById("screen");
+let hearts = 0;
+
+function step1(){
+  screen.innerHTML = `
+    <h3>Puzzle 1 🧠</h3>
+    <p>What is 2 + 3 ?</p>
+    <input id="ans" placeholder="Type answer">
+    <br><br>
+    <button onclick="check1()">Submit</button>
+  `;
+}
+
+function check1(){
+  let a = document.getElementById("ans").value;
+  if(a == "5"){
+    step2();
+  } else {
+    alert("Wrong answer 😛 Try again");
+  }
+}
+
+function step2(){
+  screen.innerHTML = `
+    <h3>Tap the Hearts 💕</h3>
+    <p>Tap hearts 5 times to unlock next page</p>
+    <div>
+      <span class="heart" onclick="tap()">❤️</span>
+      <span class="heart" onclick="tap()">❤️</span>
+      <span class="heart" onclick="tap()">❤️</span>
+    </div>
+    <p>Hearts tapped: <b id="count">0</b></p>
+  `;
+}
+
+function tap(){
+  hearts++;
+  document.getElementById("count").innerText = hearts;
+  if(hearts >= 5){
+    finalPage();
+  }
+}
+
+function finalPage(){
+  screen.innerHTML = `
+    <h2>For You 💖</h2>
+    <p>
+      You are the reason my days feel lighter 🌸<br><br>
+      Your smile heals me,<br>
+      your voice feels like home 🫶<br><br>
+      No matter what happens,<br>
+      I’ll always choose you ❤️
+    </p>
+  `;
+}
+</script>
+
+</body>
+</html>
